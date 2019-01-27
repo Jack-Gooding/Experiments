@@ -1,0 +1,301 @@
+html {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+body {
+  background-image: url(BG-Noise.jpg);
+  background-repeat:repeat;
+  color: white;
+  height: 100%;
+}
+
+* {
+  border-radius: 2px;
+}
+
+h1, h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+.container-fluid {
+  height: 100%;
+}
+
+.headerBar {
+  background:beige;
+  color: black;
+  border-bottom: solid 1px black;
+  height: 25px;
+}
+
+.headerBar > * {
+  display: table;
+  height: 100%;
+}
+
+.headerBar p {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.cookieWarning {
+  position: fixed;
+  width: 100%;
+  height: 50px;
+  bottom: 0;
+  text-align: center;
+  background: rgba(60, 60, 90, 0.5);
+  border-top: solid 2px rgba(120, 120, 180, 0.5);
+  font-weight: 600;
+  vertical-align: middle;
+}
+
+.cookieWarning * {
+  display: inline-block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-25%);
+}
+
+.cookieWarning button {
+  color: black;
+}
+
+.mainContent {
+  height: 100%;
+}
+
+.buyAll {
+  width: 100%;
+  height: 25px;
+  background: grey;
+  text-align: center;
+}
+
+.buyAll:hover {
+  border: solid 2px white;
+}
+
+.buyAll:active {
+  background: white;
+  border: solid 2px grey;
+  color: black;
+}
+
+
+
+
+.display {
+  height: 50px;
+  background: blue;
+  margin-left: 0;
+  background: forestGreen;
+  text-align: center;
+  font-weight: bolder;
+  color: white;
+  margin-top: 3px;
+  box-sizing: border-box;
+}
+
+
+.description {
+  position: relative;
+  width: 150px;
+  height: 50px;
+  right: 100%;
+  top: -100%;
+  background: #ecf;
+  margin: 0px;
+  z-index: 15;
+}
+
+
+
+/*=========================*/
+/*=====upgrade Styling=====*/
+/*=========================*/
+
+.upgradeColumn {
+  padding: 0 50px;
+  background: rgba(20,20,20,0.3);
+  height: 100%;
+}
+
+.upgrades {
+  padding-top: 10px;
+  display: flex;
+  flex-flow: wrap;
+}
+
+.upgradeBox {
+  width: 50%;
+  text-align: center;
+}
+
+.upgradePadding {
+  margin: 2%;
+  padding: 3px;
+  box-sizing: border-box;
+  border: solid 1px black;
+}
+.upgradeName {
+}
+
+/*=========================*/
+/*===Acheivement Styling===*/
+/*=========================*/
+
+.achievement {
+  border: 5px grey solid;
+  text-align: center;
+  position: absolute;
+  width: 500px;
+  height: 225px;
+  background: black;
+  bottom: 50px;
+  font-size: 50px;
+  color: white;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.acheivementsContainer {
+  min-height: 400px;
+  display: flex;
+  flex-flow: wrap;
+  width: 100%;
+  text-align: center;
+}
+
+/*=========================*/
+/*=====Middle Styling======*/
+/*=========================*/
+
+.middleColumn {
+  background: rgba(100,100,100,0.2);
+  padding: 0 50px;
+  height: 100%;
+}
+
+.display {
+  margin-top: 50px;
+  background: green;
+  text-align: center;
+  color: yellow;
+  font-size: 20px;
+  display: table;
+  width: 100%;
+  height: 300px;
+}
+
+.display * {
+  display: table-cell;
+  vertical-align: middle;
+  color: white;
+}
+
+/*=========================*/
+/*====Building Styling=====*/
+/*=========================*/
+
+
+.buildingColumn {
+  padding: 0 50px;
+  background: rgba(20,20,20,0.3);
+  text-align: center;
+  height: 100%;
+}
+
+.buildingColumn h1 {
+  margin: 5px 0;
+}
+
+.buildings {
+  width: 100%;
+  margin: auto;
+}
+
+/* Outer Building Box */
+.buildingBox {
+  width: 100%;
+  height: 60px;
+  display: flex;
+  font-weight: 700;
+  margin: 10px 0;
+  border: solid 1px black;
+}
+
+.buildCount {
+  width: 20%;
+  height: 100%;
+  background: #333;
+}
+
+.buildingContainer {
+  width: 80%;
+  height: 100%;
+}
+
+
+.buildingName {
+  background: grey;
+}
+
+.buildCost {
+  background: red;
+}
+
+/* Controls shape*/
+.buildCost, .buildingName {
+  width: 100%;
+  height: 50%;
+  border-radius: 0;
+}
+
+/* Controls Border Radius & Lines */
+.buildCost { border-top-right-radius: 0;  border-top-left-radius: 0;  border-bottom-left-radius: 0; }
+.buildingName { border-bottom-right-radius: 0;  border-top-left-radius: 0;  border-bottom-left-radius: 0; border-bottom: solid 1px black; }
+.buildCount { border-bottom-right-radius: 0; border-top-right-radius: 0; border-right: solid 1px black;}
+
+/* Adds Floating, Centered Text */
+.buildCount, .buildCost, .buildingName {text-align: center; display: table;}
+.buildingBoxText  {display: table-cell; vertical-align: middle;}
+
+/*=== x1, x10, x25, x100 ===*/
+/*==========================*/
+.purchaseAmount * {
+  width: 24%;
+  height: 25px;
+  background: #668;
+  text-align: center;
+  display: inline-block;
+  border: solid 1px black;
+}
+
+.purchaseAmount *:hover {
+  border: solid 2px white;
+  box-sizing: border-box;
+}
+
+.purchaseAmountActive {
+  background: white;
+  border: solid 2px grey;
+  color: black;
+  box-sizing: border-box;
+}
+
+/*=========================*/
+/*====Modal Styling=====*/
+/*=========================*/
+
+.modal-content {
+  color: black;
+}
+
+/* Version History*/

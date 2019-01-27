@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="scaffold.css">
+  <link rel="stylesheet" href="./experiments/idle_game/idle_game.css">
+  <title>Idle_Game</title>
+
+</head>
+<body>
+  <div class="container-fluid">
+
+    <div class="row headerBar">
+      <div class="col-sm-9"><p><strong>Idle_Game by</strong> <a href="http://www.jack-gooding.com">Jack Gooding</a></p></div>
+      <div class="col-sm-1"><p class="saved"></p></div>
+      <div class="col-sm-2"><p style="font-weight: 500;"><a href="#" class="saveButton">Save</a>  |  <a href="#">Options</a>  |  <a href="#" class="cookieClear">Reset</a>  |  <a href="#" data-toggle="modal" data-target="#myModal">Ver: 1.0</a></p></div>
+    </div>
+
+    <div class="row mainContent">
+      <div class="col-sm-3 upgradeColumn">
+        <div class="row titleBar">
+          <h1>Upgrades&nbsp; </h1>
+          <div class="buyAll">Buy All</div>
+        </div>
+        <div class="row upgrades">
+        </div>
+        <div class="row titleBar achievementsTitle">
+          <h1>Acheivements:</h1>
+        </div>
+        <div class="row acheivementsContainer">
+        </div>
+      </div>
+      <div class="col-sm-6 middleColumn">
+        <div class="row header">
+          <h1>Stats:</h1>
+          <div class="CPS"></div>
+          <div class="CPC"></div>
+          <div class="upgradeCount">Number of Upgrades: 0</div>
+          <div class="numberAchievements">Number of Achi<span class="d">e</span>vements: 0</div>
+          <div class="achievementMultiplier">Achievement Multiplier: 100%</div>
+          <div class="numberClicks">Number of Clicks: 0</div>
+          <div class="timer">Time: 0</div>
+
+        </div>
+        <div class="row">
+          <div class="display"><h1>0</h1></div>
+        </div>
+        <div class="row" style="margin-top: 100px;">
+          <h1>Prestiege:</h1>
+          <div class="progress">
+  <div class="progress-bar pbar1" role="progressbar" aria-valuenow="70"
+  aria-valuemin="0" aria-valuemax="100" style="width:70%">
+    <span class="sr-only">70% Complete</span>
+  </div>
+</div><div class="progress">
+  <div class="progress-bar pbar2" role="progressbar" aria-valuenow="23"
+  aria-valuemin="0" aria-valuemax="100" style="width:23%">
+    <span class="sr-only">23% Complete</span>
+  </div>
+</div>
+        </div>
+      </div>
+      <div class="col-sm-3 buildingColumn">
+        <div class="row titleBar">
+          <h1>Buildings</h1>
+          <div class="purchaseAmount">
+            <div class="x1 purchaseAmountActive">x1</div>
+            <div class="x10">x10</div>
+            <div class="x25">x25</div>
+            <div class="x100">x100</div>
+          </div>
+        </div>
+        <div class="row buildings">
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<!-- Version History Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Version History</h4>
+        </div>
+        <div class="modal-body">
+          <h5>Future Content - ???</h5>
+          <ul class="well">
+            <li>CSS Styling.</li>
+            <li>Building Upgrades.</li>
+            <li>Theme Change.</li>
+            <li>Save Export / Import</li>
+            <li>Prestiege System</li>
+            <li>...</li>
+          </ul>
+          <h5>v1.01 - 21/12/2017</h5>
+          <ul class="well">
+            <li>Fixed Acheivements, Improved layout.</li>
+            <li>Added upgrades for buildings, to do:
+              <ul>
+                <li>Make only apply to relevant Buildings.</li>
+                <li>Trigger correctly.</li>
+                <li>Display individual building production.</li>
+              </ul>
+            </li>
+            <li></li>
+          </ul>
+          <h5>v1.0 - 20/12/2017</h5>
+          <ul class="well">
+            <li>This is the first release.</li>
+            <li>Most Javascript seems to be working.</li>
+            <li>Still a lot of CSS styling to be done.</li>
+          </ul>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</body>
+</html>
+<script type="text/javascript" src="experiments/idle_game/idle_game.js"></script>
+<noscript>Sorry, your browser does not support JavaScript!</noscript>
