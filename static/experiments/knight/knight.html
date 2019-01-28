@@ -41,7 +41,16 @@
   </head>
   <body>
       <h1>The Trapped Knight</h1>
-      <div></div>
-      <div id="canvas-target" style="width: 100%;"><p>content</p></div>
+      <div>
+        <div>Colour Tiles:<input id="doColourTiles" onClick="colourTilesChange()" type="checkbox" checked></input></div>
+        <div>Number Board:<input id="doNumberBoard" onClick="numberBoardChange()" type="checkbox" checked></input></div>
+        <div>Draw Grid: <input id="doDrawGrid" onClick="drawGridChange()" type="checkbox" checked></input></div>
+        <div>Draw Circles: <input id="doDrawCircles" onClick="drawCirclesChange()" type="checkbox" checked></input></div>
+        <div>No Fail: <input id="noFail" onClick="noFailChange()" type="checkbox" checked></input></div>
+
+
+        <button onClick="render()">Render</button>
+      </div>
+      <div id="canvas-target" style="width: 100%;"><p></p></div>
   </body>
 </html>

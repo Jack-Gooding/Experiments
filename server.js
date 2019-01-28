@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const path = require('path');
 const app = express();
+const port = process.env.PORT || 3500;
 
 let dynamicRoutes = [];
 
@@ -48,6 +49,16 @@ walk(__dirname + "/static/experiments", function(err, results) {
 
 app.use(express.static(__dirname + '/static'));                 // set the static files location /public/img will be /img for users
 
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
+app.get('/experiments', (req, res) => {
+  res.send(dynamicRoutes); // load the single view file (angular will handle the page changes on the front-end)
+});
 app.get('/', (req, res) => {
   res.sendfile(__dirname + '/static/index.html'); // load the single view file (angular will handle the page changes on the front-end)
 });
@@ -69,4 +80,4 @@ app.get('/:experiment', (req, res) => {
   console.log("success!: "+route);
 });
 
-app.listen(4200);
+app.listen(port, () => console.log(`Listening on port ${port}`));
