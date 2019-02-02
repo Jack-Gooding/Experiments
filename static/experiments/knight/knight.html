@@ -24,33 +24,79 @@
     <!-- premade css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"><!-- load fontawesome -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./css/bootstrap-toggle.min.css">
 
     <!-- written style -->
-    <link href="./experiments/knight/knight.css" rel="stylesheet" type="text/css"/><!-- css stylesheet -->
+    <link href="./css/experiments.less" rel="stylesheet/less" type="text/css"/><!-- css stylesheet -->
+    <link href="./experiments/knight/knight.less" rel="stylesheet/less" type="text/css"/><!-- css stylesheet -->
 
     <!-- premade js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> <!-- Bootstrap Javascript -->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="    crossorigin="anonymous"></script>
+    <script src="./js/less.min.js"></script>
+    <script src="./js/bootstrap-toggle.min.js"></script>
 
     <!-- written js -->
     <script src="./experiments/knight/knight.js"></script>
 
+    <!--Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121612593-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-121612593-1');
+    </script>
 
   </head>
   <body>
+    <div class="header-bar row"><a href="/"><p>&larr; Experiments</p></a><a href="http://jack-gooding.com"><p>Jack-Gooding.com &rarr;</p></a></div>
+
+    <div class="container-fluid">
       <h1>The Trapped Knight</h1>
-      <div>
-        <div>Colour Tiles:<input id="doColourTiles" onClick="colourTilesChange()" type="checkbox" checked></input></div>
-        <div>Number Board:<input id="doNumberBoard" onClick="numberBoardChange()" type="checkbox" checked></input></div>
-        <div>Draw Grid: <input id="doDrawGrid" onClick="drawGridChange()" type="checkbox" checked></input></div>
-        <div>Draw Circles: <input id="doDrawCircles" onClick="drawCirclesChange()" type="checkbox" checked></input></div>
-        <div>No Fail: <input id="noFail" onClick="noFailChange()" type="checkbox" checked></input></div>
+      <div id="canvas-options">
+        <div class="checkbox">
+            <label>
+              <p>Coloured Tiles</p>
+              <input id="doColourTiles" type="checkbox" data-toggle="toggle">
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <p>Board Numbers</p>
+              <input id="doNumberBoard" type="checkbox" data-toggle="toggle">
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <p>Board grid</p>
+              <input id="doDrawGrid" type="checkbox" data-toggle="toggle">
+            </label>
+          </div>
+          <div class="checkbox">
+            <label>
+              <p>Placement Circles</p>
+              <input id="doDrawCircles" type="checkbox" data-toggle="toggle">
+            </label>
+          </div>
 
+          <div class="checkbox">
+            <label>
+              <p>Skip #2084?</p>
+              <input id="noFail" type="checkbox" data-toggle="toggle">
+            </label>
+          </div>
 
-        <button onClick="render()">Render</button>
+  </div>
+
+        <button type="button" onClick="render()" class="btn btn-primary" width="100px">Render</button>
+
+      <div class="col" id="canvas-container">
+      <div id="canvas-target">
+        <canvas id="canvas"></canvas>
       </div>
-      <div id="canvas-target" style="width: 100%;"><p></p></div>
+    </div>
+    </div>
   </body>
 </html>

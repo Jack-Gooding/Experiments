@@ -20,25 +20,26 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Experiments</title>
+    <title>Rock, Paper, Scissors</title>
     <!-- premade css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"><!-- load fontawesome -->
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="./css/bootstrap-toggle.min.css">
 
     <!-- written style -->
-    <link href="./css/index.less" rel="stylesheet" type="text/less"/><!-- css stylesheet -->
-    <link href="./css/experiments.less" rel="stylesheet" type="text/less"/><!-- css stylesheet -->
-
+    <link href="./css/experiments.less" rel="stylesheet/less" type="text/less"/><!-- css stylesheet -->
+    <link href="./experiments/knight/knight.css" rel="stylesheet" type="text/css"/><!-- css stylesheet -->
 
     <!-- premade js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> <!-- Bootstrap Javascript -->
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="    crossorigin="anonymous"></script>
     <script src="./js/less.min.js"></script>
+    <script src="./js/bootstrap-toggle.min.js"></script>
 
     <!-- written js -->
-    <script src="./js/index.js"></script>
+    <script src="./rps.js"></script>
+    <script src="./experiments/rps/rps.js"></script>
+
     <!--Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121612593-1"></script>
     <script>
@@ -48,14 +49,24 @@
 
       gtag('config', 'UA-121612593-1');
     </script>
+
+
+
   </head>
   <body>
-    <div class="header-bar row">
-      <a href="http://jack-gooding.com">&larr; Jack-Gooding.com</a>
-    </div>
-      <h1>Experiments</h1>
-      <div id="experiment-container" class="container-fluid">
+    <div class="header-bar row"><a href="/"><p>&larr; Experiments</p></a><a href="http://jack-gooding.com"><p>Jack-Gooding.com &rarr;</p></a></div>
+    <div class="container-fluid">
+      <div class="row">
+      <h1>Rock, Paper, Scissors</h1>
+      <div class="col" id="canvas-container">
+
+      <div id="canvas-target" style="width: 100%;"><p></p>
+      <canvas id="canvas" width="640px"></canvas>
       </div>
-      <table id="experiment-table"></table>
+    </div>
+
+      <p id="perf-stats"></p>
+    </div>
+    </div>
   </body>
 </html>

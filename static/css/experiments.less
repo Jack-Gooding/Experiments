@@ -1,0 +1,102 @@
+body {
+  background: #8ab2cc;
+  text-align: center;
+}
+h1 {
+  margin: 0;
+  margin-bottom: 1em;
+}
+.header-bar {
+  width: 100%;
+  display: inline-block;
+  color: black;
+  a {
+    color: black;
+    margin: auto;
+    margin-bottom: 0;
+    padding: 10px 10%;
+    display: inline-block;
+    font-size: 1.2em;
+
+  }
+}
+.checkbox {
+  margin-top: 0 !important;
+  & p {
+    margin-right :20px;
+    display: inline-block;
+    transform: translateY(-5px);
+  }
+}
+
+#canvas-options {
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+  justify-content: center;
+}
+
+#canvas-container {
+  background: #4d7eb6;
+  padding: 15px;
+  margin: auto;
+  border: solid 2px black;
+  border-radius: 10px;
+  display: block;
+}
+#canvas-controls {
+  background: #4d7eb6;
+  display: -webkit-flex;
+  display: flex;
+  flex-wrap: wrap;
+  -webkit-justify-content: space-around;
+  justify-content: space-around;
+
+}
+#canvas-target {
+  text-align: center;
+  width: 100%;
+  margin: auto;
+}
+#canvas {
+  background: white;
+  margin: 10px auto;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+
+button {
+  width: 100px;
+  border: solid 5px black;
+}
+
+.btn {
+  margin-bottom: 15px;
+}
+
+@media (min-width: 480px) { //equivalent to boostrap -xs
+
+    #canvas-container {
+      width: 440px;
+    }
+  }
+@media (min-width: 768px ) { //equivalent to boostrap -sm
+
+  #canvas-container {
+    width: 540px;
+  }
+}
+
+@media (min-width: 992px ) { //equivalent to boostrap -md
+
+  #canvas-container {
+    width: 740px;
+  }
+}
+@media (min-width: 1200px) { //equivalent to boostrap -lg
+
+
+}

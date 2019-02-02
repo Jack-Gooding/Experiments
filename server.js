@@ -36,14 +36,16 @@ walk(__dirname + "/static/experiments", function(err, results) {
   results.forEach(function(element) {
     elementFileType = element.split(".");
     //console.log(elementFileType.slice(-1));
-    if(elementFileType.slice(-1) == "html") {
+    if(elementFileType.slice(-1) == "json") {
       dirName = elementFileType.slice(-2,-1)[0].split("/").slice(-1)[0];
-      console.log(dirName);
-      dynamicRoutes.push(dirName);
+      //console.log(dirName);
+      let info = JSON.parse(fs.readFileSync(__dirname +`/static/experiments/${dirName}/${dirName}.json`, 'utf8'));
+      console.log(info);
+      dynamicRoutes.push({alias: info.alias, title: info.title, description: info.description});
+      };
       //app.get(`/${dirName}`, (req, res) => {
         //res.sendfile(__dirname + `/static/experiments/${dirName}/${dirName}.html`); // load the single view file (angular will handle the page changes on the front-end)
       //});
-    }
   });
 });
 
@@ -58,6 +60,7 @@ app.use(function(req, res, next) {
 
 app.get('/experiments', (req, res) => {
   res.send(dynamicRoutes); // load the single view file (angular will handle the page changes on the front-end)
+  console.log(dynamicRoutes);
 });
 app.get('/', (req, res) => {
   res.sendfile(__dirname + '/static/index.html'); // load the single view file (angular will handle the page changes on the front-end)
@@ -71,7 +74,7 @@ app.get('/:experiment', (req, res) => {
   console.log(req.params.experiment);
   let route = '';
   dynamicRoutes.forEach(function(routeName) {
-    if (req.params.experiment === routeName) {
+    if (req.params.experiment === routeName.alias) {
     route = req.params.experiment;
   };
 });

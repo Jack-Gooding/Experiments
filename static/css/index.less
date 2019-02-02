@@ -1,0 +1,110 @@
+
+body {
+  background: #8ab2cc
+}
+
+.header-bar {
+  text-align: left;
+  width: 75%;
+  margin: auto;
+  font-size: 1.2em;
+  padding: 5px;
+  & > a {
+    color: black;
+  }
+}
+
+.experiment-row {
+  display: table;
+  width: 75%;
+  margin: 5px auto;
+
+  tr {
+    border: 3px solid #181818;
+    border-radius: 10px;
+  }
+
+  &  > * {
+    //border: solid 1px black;
+  }
+  & a {
+    & :hover {
+
+    }
+    & :active {
+
+    }
+  }
+  & .experiment-img {
+    background: white;
+    border-radius: 10px;
+  }
+  & .experiment-title {
+    padding: 10px;
+    min-width: 200px;
+  }
+
+  & .experiment-desc {
+    & p {
+
+    }
+  }
+}
+
+.container-fluid {
+  margin: 0 10%;
+}
+.experiment {
+  margin: 5px auto;
+  border: 3px solid #181818;
+  border-radius: 10px;
+  padding: 5px;
+  background: #4d7eb6;
+
+  &  > * {
+
+    //border: solid 1px black;
+  }
+  & a {
+    color: #181818;
+    & :hover {
+      color: lighten(#181818, 20%);
+    }
+    & :active {
+
+    }
+  }
+  & .experiment-img {
+    img {
+      background: white;
+      border-radius: 10px;
+      margin: 2% auto;
+      display: block;
+      width: 100%;
+      border: 3px solid #181818;
+
+    }
+  }
+  & .experiment-title {
+    font-size: 1.1em;
+    padding: 10px;
+    display: inline-block;
+    min-width: 200px;
+    colour: black;
+  }
+
+  & .experiment-desc {
+    & p {
+
+    }
+  }
+}
+//@media (min-width: 480px) { //equivalent to boostrap -xs
+//@media (min-width: 768px ) { //equivalent to boostrap -sm
+//@media (min-width: 992px ) { //equivalent to boostrap -md
+@media (min-width: 1200px) { //equivalent to boostrap -lg
+  .experiment {
+    display: flex;
+     align-items: center;
+   }
+}

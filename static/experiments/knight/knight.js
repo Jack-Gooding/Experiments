@@ -4,80 +4,74 @@ let doNumberBoard = true;
 let doDrawGrid = true;
 let doDrawCircles = true;
 $(document).ready(function() {
-  $("#doColourTiles").prop('checked', doColourTiles);
-  $("#doNumberBoard").prop('checked', doNumberBoard);
-  $("#doDrawGrid").prop('checked', doDrawGrid);
-  $("#doDrawCircles").prop('checked', doDrawCircles);
-  $("#doDrawCircles").prop('checked', doDrawCircles);
-  $("#noFail").prop('checked', noFail);
+  $("#doColourTiles").bootstrapToggle('on');
+  $("#doNumberBoard").bootstrapToggle('on');
+  $("#doDrawGrid").bootstrapToggle('on');
+  $("#doDrawCircles").bootstrapToggle('on');
+  $("#noFail").bootstrapToggle('off');
+
+  $('#doColourTiles').change(function() {
+    if ($(this).prop('checked')) {
+      doColourTiles = true;
+    } else {
+      doColourTiles = false;
+    }
+  })
+
+  $('#doNumberBoard').change(function() {
+    if ($(this).prop('checked')) {
+      doNumberBoard = true;
+    } else {
+      doNumberBoard = false;
+    }
+  })
+
+  $('#doDrawGrid').change(function() {
+    if ($(this).prop('checked')) {
+      doDrawGrid = true;
+    } else {
+      doDrawGrid = false;
+    }
+  })
+
+  $('#doDrawCircles').change(function() {
+    if ($(this).prop('checked')) {
+      doDrawCircles = true;
+    } else {
+      doDrawCircles = false;
+    }
+  })
+
+  $('#noFail').change(function() {
+    if ($(this).prop('checked')) {
+      noFail = true;
+    } else {
+      noFail = false;
+    }
+  })
 });
 
-function colourTilesChange() {
-  if($("#doColourTiles").is(":checked")) {
-    doColourTiles = true;
-  } else {
-    doColourTiles = false;
-  }
-  console.log(doColourTiles);
-}
-
-function numberBoardChange() {
-  if($("#doNumberBoard").is(":checked")) {
-    doNumberBoard = true;
-  } else {
-    doNumberBoard = false;
-  }
-  console.log(doNumberBoard);
-}
-
-
-function drawGridChange() {
-  if($("#doDrawGrid").is(":checked")) {
-    doDrawGrid = true;
-  } else {
-    doDrawGrid = false;
-  }
-  console.log(doDrawGrid);
-}
-
-function drawCirclesChange() {
-  if($("#doDrawCircles").is(":checked")) {
-    doDrawCircles = true;
-  } else {
-    doDrawCircles = false;
-  }
-  console.log(doDrawCircles);
-}
-
-function noFailChange() {
-  if($("#noFail").is(":checked")) {
-    noFail = true;
-  } else {
-    noFail = false;
-  }
-  console.log(doDrawCircles);
-}
 
 function render() {
   console.log("pressed");
 
-
-  let canvasMax =$("#canvas-target").width();
   let squares = 67; //tiles per row
+
   if (noFail) {
-  squares = 81; //tiles per row
+    squares = 81; //tiles per row
   };
   console.log(squares);
-  let interval = Math.floor(canvasMax/squares); //width/height of tile
+  let interval = Math.floor(670/squares); //width/height of tile
   let bw = interval*squares; //canvas width
   let bh = interval*squares; //canvas height
+  console.log(bw);
   let p = 0; //padding for grid
   let board = {}; //empty board layout, to be filled as {"y1":{"x1": {"value": value}, "x2":{"value": value},...},"y2":{"x1": {"value": value}, "x2": {"value": value},...},...
   let visited = []; //array storing visited cells as objects [{"x1": x, "y1": y}, {"x2": x, "y2": y,}, ...]
 
 
 
-$("#canvas-target").html(`<canvas id="canvas" width="${bw+squares}px" height="${bh+squares}px"></canvas>`);
+$("#canvas-target").html(`<canvas id="canvas" width="${bw}px" height="${bh}px"></canvas>`);
 
 
 let canvas = document.getElementById("canvas");
@@ -108,12 +102,12 @@ function drawTiles(){
 
   context.beginPath();
 
-for (let x = 0; x <= bw; x += interval) {
+for (let x = interval; x <= bw; x += interval) {
     context.moveTo(0.5 + x + p, p);
     context.lineTo(0.5 + x + p, bh + p);
 }
 
-for (let x = 0; x <= bh; x += interval) {
+for (let x = interval; x <= bh; x += interval) {
     context.moveTo(p, 0.5 + x + p);
     context.lineTo(bw + p, 0.5 + x + p);
 }
@@ -156,7 +150,7 @@ context.beginPath();
 context.moveTo(currentX*interval-interval/2, currentY*interval-interval/2);
 context.lineTo(newX*interval-interval/2, newY*interval-interval/2);
 context.strokeStyle = "hsl("+colour+", 100%, 50%)";
-context.lineWidth = Math.ceil(squares / 20);
+context.lineWidth = Math.ceil(squares / 30);
 context.stroke();
 }
 
@@ -262,7 +256,7 @@ function preparePlacement() {
       if (typeof xCoordCurrent != "number" || typeof yCoordCurrent != "number") {
         console.log("invalid coords");
         stopPlacement();
-      }
+      };
       //console.log(lastValue);
       for (let x = 1; x <= 2; x++) { //Iterate through 8 available moves, add to array
         if (x == 1) {
