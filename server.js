@@ -60,7 +60,6 @@ app.use(function(req, res, next) {
 
 app.get('/experiments', (req, res) => {
   res.send(dynamicRoutes); // load the single view file (angular will handle the page changes on the front-end)
-  console.log(dynamicRoutes);
 });
 app.get('/', (req, res) => {
   res.sendfile(__dirname + '/static/index.html'); // load the single view file (angular will handle the page changes on the front-end)
@@ -73,6 +72,7 @@ app.get('/', (req, res) => {
 app.get('/:experiment', (req, res) => {
   console.log(req.params.experiment);
   let route = '';
+  console.log(dynamicRoutes)
   dynamicRoutes.forEach(function(routeName) {
     if (req.params.experiment === routeName.alias) {
     route = req.params.experiment;
