@@ -41,9 +41,7 @@
     <!-- written js -->
 
     <script src="./circuits.js"></script>
-    <script src="./tile.js"></script>
     <script src="./experiments/circuits/circuits.js"></script>
-    <script src="./experiments/circuits/tile.js"></script>
 
     <!--Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121612593-1"></script>
@@ -64,57 +62,20 @@
       <h1>Circuit Generator</h1>
 
       <div class="col" id="canvas-container">
-        <div id="canvas-options">
-          <div class="checkbox">
-              <label>
-                <p>Show A* Sets</p>
-                <input id="showSets" type="checkbox" data-toggle="toggle">
-              </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <p>Show Grid</p>
-                <input id="showGrid" type="checkbox" data-toggle="toggle">
-              </label>
-            </div>
-            <div class="checkbox">
-              <label>
-                <p>Show Walls</p>
-                <input id="showWalls" type="checkbox" data-toggle="toggle">
-              </label>
-            </div>
-
-            <div class="checkbox">
-              <label>
-                <p>Use Heuristics</p>
-                <input id="useHeuristics" type="checkbox" data-toggle="toggle">
-              </label>
-            </div>
-            <div class="form-group row">
-
-           <div class="col-xs-4">
-             <label for="wireColour">Wire Colour</label>
-             <input class="form-control" id="wireColour" type="text">
-           </div>
-           <div class="col-xs-4">
-             <label for="bgColour">Background Colour</label>
-             <input class="form-control" id="bgColour" type="text">
-           </div>
-           <div class="col-xs-4">
-             <label for="gridColour">Grid Colour</label>
-             <input class="form-control" id="gridColour" type="text">
-           </div>
-          </div>
-    </div>
-    <button type="button" onClick="beginDraw()" class="btn btn-primary" width="100px">Render</button>
-
+      <!--<div id="canvas-controls" class="row">
+        <div class="checkbox-inline col">
+            <input id="animation-toggle" type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-offstyle="warning" data-on="Stop" data-off="Start" data-width="100">
+        </div>
+        <div class="col">
+          <button type="button" onClick="nextAnimation()" class="btn btn-primary" width="100px">Next</button>
+        </div>
+        <div class="col">
+          <button type="button" onClick="clearBoard()" class="btn btn-danger" width="100px">Clear</button>
+        </div>
+      </div>-->
       <div id="canvas-target" class="row">
       <canvas id="canvas"></canvas>
       </div>
-      <div><p>Wire Colour accepts "random:", "similar:", "classic", "r,g,b", or "brightness".
-        <br/> This canvas is savable as a .png, and intended for use as a tiled background.
-        <br/> I am aware of an issue with occasional errors on canvas edge.
-      </p></div>
     </div>
     </div>
       <p id="perf-stats"></p>

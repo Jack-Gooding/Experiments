@@ -1,19 +1,7 @@
-let startDraw = false; //encloses draw function, when true, draw runs.
 
+let fr = 3;
 
-// // // controls visuals only//
-let showGrid = true;
-let showWalls = false;
-let showSets = false;
-let useHeuristics = true;
-
-let wireColour = [120,255,40];
-let bgColour = [65];
-let gridColour = [35];
-
-let fr = 5; //frameRate, higher = faster
-
-let numTiles = 15; //number of tiles in each row/column. always square.
+let numTiles = 15;
 
 //holds all tiles. structure is: numTiles arrays, containing numTiles 'Tile' objects
 let tiles = [];
@@ -22,12 +10,11 @@ let numCircles = 16;
 //holds all circles. simple array containing 'Circle' objects
 let circles = [];
 
-//used to determine when a path is finished, and to start the next.
+//currently unused
 let numWires = 0;
 
-let tileSize = 40; //size of tiles in px
-
-let wh = numTiles*tileSize; //width / height of canvas, created to display full tiles + grid
+let tileSize = 40;
+let wh = numTiles*tileSize+1;
 
 //Two arrays to hold "open" tiles to be assessed, and "closed" tiles which have been assessed
 let openSet = [];
@@ -43,96 +30,6 @@ let end;
 // will be 'true' when openSet empty, closedSet full, with no more tiles available to examine
 let noSolution = false;
 
-//Configuring options, uses "bootstrap-toggle" library to display
-$(document).ready(function() {
-  $("#showSets").bootstrapToggle('off');
-  $("#showGrid").bootstrapToggle('on');
-  $("#showWalls").bootstrapToggle('off');
-  $("#useHeuristics").bootstrapToggle('on');
-
-  $('#showSets').change(function() {
-    if ($(this).prop('checked')) {
-      showSets = true;
-    } else {
-      showSets = false;
-    }
-  })
-
-  $('#showWalls').change(function() {
-    if ($(this).prop('checked')) {
-      showWalls = true;
-    } else {
-      showWalls = false;
-    }
-  })
-
-  $('#showGrid').change(function() {
-    if ($(this).prop('checked')) {
-      showGrid = true;
-    } else {
-      showGrid = false;
-    }
-  })
-
-  $('#useHeuristics').change(function() {
-    if ($(this).prop('checked')) {
-      useHeuristics = true;
-    } else {
-      useHeuristics = false;
-    }
-  })
-
-  $('#wireColour').val(wireColour);
-  $('#wireColour').on('input',function(e){
-    let v = this.value.split(":");
-    console.log(v);
-    if (v.length > 1) {
-      let c = v[1].split(",");
-      if(v[0] == "random") {
-          wireColour = "random";
-      } else if (v[0] == "similar") {
-          wireColour = "similar";
-        }
-      } else {
-    let c = this.value.split(",");
-    console.log(`c: ${c}`);
-    c.forEach(function(ele) {
-      console.log(ele);
-    })
-    if (c.length === 3) {
-      wireColour = [c[0],c[1],c[2]];
-    } else {
-      wireColour = [c[0],c[0],c[0]];
-  }
-}
-});
-
-$('#bgColour').val(bgColour);
-$('#bgColour').on('input',function(e){
-
-  console.log(this.value.split(",").length);
-  let c = this.value.split(",");
-  if (this.value.split(",").length === 3) {
-    bgColour = [c[0],c[1],c[2]];
-  } else {
-    bgColour = [c[0],c[0],c[0]];
-}
-});
-
-$('#gridColour').val(gridColour);
-$('#gridColour').on('input',function(e){
-
-  console.log(this.value.split(",").length);
-  let c = this.value.split(",");
-  if (this.value.split(",").length === 3) {
-    gridColour = [c[0],c[1],c[2]];
-  } else {
-    gridColour = [c[0],c[0],c[0]];
-}
-});
-
-});
-
 
 function Circle(x, y) { //Constructor object for "through-hole" circles of circuit board.
   this.rawX = x;
@@ -140,38 +37,121 @@ function Circle(x, y) { //Constructor object for "through-hole" circles of circu
   this.x = x*tileSize+tileSize/2;
   this.y = y*tileSize+tileSize/2;
   this.pair = 0;
-  this.colour;
-  this.show = function(num, col) {
-    this.pair = num*2;
-    if(col == "random") {
-      if (circles[this.pair].colour) {
-        this.colour = circles[this.pair].colour;
-      } else {
-        this.colour = [Math.random()*255,Math.random()*255,Math.random()*255];
-      }
-    } else if (col == "similar") {
-      if (circles[this.pair].colour) {
-        r = circles[this.pair].colour > 210 ? circles[this.pair].colour - 40 : (circles[this.pair].colour < 50 ? circles[this.pair].colour + 40 : (Math.random() > 0.5 ? circles[this.pair].colour + 40: circles[this.pair].colour -40));
-        g = circles[this.pair].colour > 210 ? circles[this.pair].colour - 40 : (circles[this.pair].colour < 50 ? circles[this.pair].colour + 40 : (Math.random() > 0.5 ? circles[this.pair].colour + 40: circles[this.pair].colour -40));
-        b = circles[this.pair].colour > 210 ? circles[this.pair].colour - 40 : (circles[this.pair].colour < 50 ? circles[this.pair].colour + 40 : (Math.random() > 0.5 ? circles[this.pair].colour + 40: circles[this.pair].colour -40));;
-        //this.colour = [r,g,b];
-        this.colour = circles[this.pair].colour
-      } else if (!circles[this.pair].colour) {
-        this.colour = [Math.random()*255,Math.random()*255,Math.random()*255];
-      }
-    } else if (col == "classic") {
-      this.color = [(255/numCircles*(num+1)),200,(255-(255/numCircles*(num+1)))]
-    } else {
-      this.colour = col;
-    }
-    fill(this.colour);
-    stroke(this.colour);
+  this.show = function(num) {
+    this.pair = num;
+    fill(50);
+    stroke((255/numCircles*(num+1)),200,(255-(255/numCircles*(num+1))));
     ellipse(this.x, this.y, 15, 15);
     //console.log("showing");
   }
 }
 
+function Tile(x, y) { //constructor for all tiles, one for each of numTiles*numTiles, display functions for 'paths' between circles
+  this.x = x;
+  this.y = y;
 
+  this.f = 0; //compound heuristic estimate, used to determine fastest route to travel.
+  this.g = 0; //'cost' from start node, +1 for every tile moved.
+  this.h = 0; //heuristic value, manhattan distance to 'end' location
+
+  this.neighbours = [];
+
+  this.previous; //assigned previous, most 'efficient' tile before current. stores entire Tile object.
+
+  this.used = false; //true if tile has been used to create a 'wire', can no longer be tested for paths.
+  this.path = 0; //true if circle spawns on tile.
+  this.direction;
+
+  this.wall = function(r,g,b) { //Simple display show for diagnostics, shows all 'used' tiles.
+    noStroke();
+    fill(`rgba(${r},${g},${b}, 0.25)`);
+    rect(this.x*tileSize, this.y*tileSize, tileSize, tileSize);
+  }
+
+
+  this.show = function(r,g,b) { //function to display 'wires', based on determined direction.
+    //fill(r,g,b);
+    //noStroke();
+    //rect(this.x*tileSize,this.y*tileSize, tileSize, tileSize);
+    let num = circles[this.path*2].pair;
+    let direction;
+    strokeCap(ROUND);
+    stroke((255/numCircles*(num+1)),200,(255-(255/numCircles*(num+1))));
+
+
+    //determine how to draw wires, if the previous vertex was on the same x plane or y plane, check above and below for which direction to draw.
+    //TODO: Add edge-checking to remove occasional artifacts when turning on an edge
+    //TODO: make wires stick to edge of nodes instead of penetrating.
+
+    if (this.previous.x == this.x) { //If x == prev.x, path follows y-plane
+      if (this.previous.y > this.y) { //If prev.y > y, path is moving up, else down
+        direction ="up";
+      } else {
+        direction ="down";
+      }
+    } else if (this.previous.y == this.y) { //If y == prev.y, path follows x-plane
+      if (this.previous.x > this.x) { //If prev.x > x, path is moving left, else right
+        direction ="left";
+      } else {
+        direction ="right";
+      }
+    }
+
+    this.direction = direction;
+
+    if (direction === "left") {
+        line(this.x*tileSize+tileSize/2, this.y*tileSize+tileSize/2, this.x*tileSize+tileSize+tileSize/2, this.y*tileSize+tileSize/2);
+      if(this.x === 0  && this.y == this.previous.y) {
+        //stroke(255,0,0);
+        line(this.x*tileSize, this.y*tileSize+tileSize/2, this.x*tileSize+tileSize/2, this.y*tileSize+tileSize/2);
+      }
+    } else if (direction === "up") {
+        line(this.x*tileSize+tileSize/2, this.y*tileSize+tileSize/2, this.x*tileSize+tileSize/2, this.y*tileSize+tileSize+tileSize/2);
+      if(this.y === 0 && this.x == this.previous.x) {
+        //stroke(255,0,0);
+        line(this.x*tileSize+tileSize/2, this.y*tileSize+tileSize/2, this.x*tileSize+tileSize/2, this.y*tileSize);
+      }
+    }  else if (direction === "right") {
+        line(this.x*tileSize+tileSize/2, this.y*tileSize+tileSize/2, this.x*tileSize-tileSize+tileSize/2, this.y*tileSize+tileSize/2);
+      if(x === numTiles-1 && this.y == this.previous.y) {
+        //stroke(255,255,0);
+        line(this.x*tileSize+tileSize/2, this.y*tileSize+tileSize/2, this.x*tileSize+tileSize, this.y*tileSize+tileSize/2);
+      }
+    }  else if (direction === "down") {
+        line(this.x*tileSize+tileSize/2, this.y*tileSize+tileSize/2, this.x*tileSize+tileSize/2, this.y*tileSize-tileSize+tileSize/2);
+      if(this.y === numTiles-1 && this.x == this.previous.x) {
+        //stroke(255,255,0);
+        line(this.x*tileSize+tileSize/2, this.y*tileSize+tileSize/2, this.x*tileSize+tileSize/2+2, this.y*tileSize+tileSize*2);
+      }
+    }
+  }
+
+  this.addNeighbours = function(tiles) {
+    let x = this.x;
+    let y = this.y;
+
+    if (y < numTiles-1) { //check for edge collision
+      this.neighbours.push(tiles[x][y+1]);
+    } else { //loop
+      this.neighbours.push(tiles[x][y+1-numTiles]);
+    }
+    if (y > 0) { //check for edge collision
+      this.neighbours.push(tiles[x][y-1]);
+    } else { //loop
+      this.neighbours.push(tiles[x][y-1+numTiles]);
+    }
+    if (x < numTiles-1) { //check for edge collision
+      this.neighbours.push(tiles[x+1][y]);
+    } else { //loop
+      this.neighbours.push(tiles[x+1-numTiles][y]);
+    }
+    if (x > 0) { //check for edge collision
+      this.neighbours.push(tiles[x-1][y]);
+    } else { //loop
+      this.neighbours.push(tiles[x-1+numTiles][y]);
+    }
+  }
+}
 
 
 function removeFromArray(arr, elm) {
@@ -181,11 +161,6 @@ function removeFromArray(arr, elm) {
     }
   }
 }
-
-function beginDraw() {
-  reset();
-  startDraw = true;
- }
 
 function heuristic(start,end) { //called per 'openSet' Tile, to assign this.h
 
@@ -219,30 +194,39 @@ function heuristic(start,end) { //called per 'openSet' Tile, to assign this.h
   return xComponent+yComponent;
 }
 
-function reset() { //Runs at start of drawing. Can be called multiple times.
-
-  openSet = [];
-  closedSet = [];
-  circles = [];
-  path = [];
-  oldPaths = [];
-  numWires = 0;
-
-  for (let i = 0; i < numTiles; i++) { //Create array with Cartesian coordinates, using i=x,j=y
+function setup() {
+   frameRate(fr);
+  $("#canvas-target").html("");
+  var myCanvas = createCanvas(wh, wh);
+  myCanvas.parent("canvas-target");
+  for (let i = 0; i < numTiles; i++) {
     tiles[i] = [];
+  }
+
+
+  for (let i = 0; i < numTiles; i++) {
     for (let j = 0; j < numTiles; j++) {
       tiles[i][j] = new Tile(i,j);
     }
   }
 
 
-  /*for (let i = 0; i < numTiles; i++) { //Diagnostic, randomly set tiles to 'used'/'wall' status, preventing them from being used in pathfinding or placement.
+  //there's a "b" for every "a"
+  //for (let a = 10; a < width; a += 30) {
+    //for (let b = 10; b < height; b += 30) {
+      //add the circles to the array at x = a and y = b
+    //  circles.push(new Circle(a, b));
+    //}
+  //}
+
+
+  for (let i = 0; i < numTiles*0; i++) { //Diagnostic, randomly set tiles to 'used'/'wall' status, preventing them from being used in pathfinding or placement.
     x = Math.ceil(Math.random()*numTiles-1);
     y = Math.ceil(Math.random()*numTiles-1);
       tiles[x][y].used = true;
-  }*/
+  }
 
-  for (let i = 0; i < numTiles; i++) { //add neighbours to all tiles, as array.
+  for (let i = 0; i < numTiles; i++) { //add neighbours to all tiles.
     for (let j = 0; j < numTiles; j++) {
       tiles[i][j].addNeighbours(tiles);
     }
@@ -270,49 +254,29 @@ function reset() { //Runs at start of drawing. Can be called multiple times.
     }
   }
 
-  for (let i = 0; i < numTiles; i++) { //iterate circles & tiles arrays, prevent any circles from entering the openSet with the 'used' flag
+  for (let i = 0; i < numTiles; i++) {
     for (let j = 0; j < numTiles; j++) {
       for (let k = 0; k < circles.length; k++) {
         if (circles[k].rawX == tiles[i][j].x && circles[k].rawY == tiles[i][j].y) {
           tiles[i][j].used = true;
+          console.log("removed tile from consideration");
         }
       }
     }
   }
 
 
-  start = tiles[circles[0].rawX][circles[0].rawY]; //set initial 'start'
-  end = tiles[circles[1].rawX][circles[1].rawY]; //set initial 'end'
+  console.log(tiles);
+  start = tiles[circles[0].rawX][circles[0].rawY];
+  end = tiles[circles[1].rawX][circles[1].rawY];
 
   openSet.push(start);
-  loop();
-}
-
-function setup() { //setup is small because the majority of the setup needs to be reproducible, and is called from 'reset()' instead
-  $("#canvas-target").html("");
-  var myCanvas = createCanvas(wh, wh);
-  myCanvas.parent("canvas-target");
+  strokeWeight(3);
 }
 
 
 function draw() {
-
-  background(bgColour);
-  strokeWeight(3);
-
-  if (showGrid) {
-    frameRate(fr);
-
-    for (let i = 0; i <= width; i+=tileSize) { //drawing tile-grid
-      stroke(gridColour);
-      line(i, 0, i, height);
-      line(0, i, width, i);
-    }
-}
-
-
-
-  if (startDraw) {
+  background(50);
 
   if (openSet.length > 0) {
     let lowestIndex = 0;
@@ -332,7 +296,10 @@ function draw() {
         end.path = numWires;
       }
       oldPaths.push(path);
+      console.log(end);
       oldPaths[numWires].unshift(end);
+      console.log("oldpaths");
+      console.log(oldPaths);
       console.log("Done");
       path = [];
       let temp = current;
@@ -354,6 +321,7 @@ function draw() {
       }
         numWires++;
       openSet.push(start);
+      console.log(openSet);
 
       for (let i = 0; i < numTiles-1; i++) {
         for (let j = 0; j < numTiles-1; j++) {
@@ -383,11 +351,7 @@ function draw() {
           neighbour.g = tempG;
           openSet.push(neighbour);
         }
-        if (useHeuristics) {
-          neighbour.h = heuristic(neighbour,end);
-        } else {
-          neighbour.h = 0;
-        }
+        neighbour.h = heuristic(neighbour,end);
         neighbour.f = neighbour.g + neighbour.h;
         neighbour.previous = current;
       }
@@ -406,9 +370,29 @@ function draw() {
         }
       }
     }
-    startDraw = false;
+    noLoop();
   }
 
+
+
+  for (let i = 0; i <= width; i+=tileSize) { //drawing tile-grid
+      stroke(100);
+      line(i, 0, i, height);
+      line(0, i, width, i);
+  }
+
+
+  for (let i = 0; i < circles.length; i++) { //display all circles
+    circles[i].show(Math.round(i/4)*4);
+  }
+
+  for (let i= 0; i < closedSet.length; i++) { //display closedSet as red square
+    //closedSet[i].wall(255,0,0);
+  }
+
+  for (let i= 0; i < openSet.length; i++) { //display openSet as green squares
+    //openSet[i].wall(0,255,0);
+  }
 
   if (!noSolution) { //if nothing left in openSet, stop path, draw back to origin
     path = [];
@@ -421,46 +405,28 @@ function draw() {
     }
   }
 
-}
 
   for (let i = 0; i < path.length-1; i++) { //draw path
-    path[i].show();
+
+    path[i].show(0,0,255);
   }
 
   for (let i = 0; i < oldPaths.length; i++) { //draw path
     for (let j = 0; j < oldPaths[i].length-1; j++) {
-      oldPaths[i][j].show();
+      oldPaths[i][j].show(0,255,255);
     }
   }
 
-if (showSets) {
-  for (let i= 0; i < closedSet.length; i++) { //display closedSet as red square
-    closedSet[i].wall(255,0,0);
-  }
-
-  for (let i= 0; i < openSet.length; i++) { //display openSet as green squares
-    openSet[i].wall(0,255,0);
-  }
-}
-
-if (showWalls) {
   for (let i = 0; i < tiles.length; i++) { //Diagnostic. Draw all walls.
     for (let j = 0; j < tiles[i].length; j++) {
       if (tiles[i][j].used) {
-        tiles[i][j].wall(255,255,255);
+        //tiles[i][j].wall(255,255,255);
       }
     }
   }
-}
-for (let i = 0; i < circles.length; i++) { //display all circles
-  circles[i].show((Math.floor(i/2)),wireColour);
-}
-
   if(numWires >= (numCircles)/2-1/2){
-    startDraw = false;
+    noLoop();
   }
-
-
 } //draw end
 
 
