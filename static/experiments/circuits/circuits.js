@@ -92,6 +92,8 @@ $(document).ready(function() {
           wireColour = "random";
       } else if (v[0] == "similar") {
           wireColour = "similar";
+        } else if (v[0] == "classic") {
+          wireColour = "classic";
         }
       } else {
     let c = this.value.split(",");
@@ -160,7 +162,8 @@ function Circle(x, y) { //Constructor object for "through-hole" circles of circu
         this.colour = [Math.random()*255,Math.random()*255,Math.random()*255];
       }
     } else if (col == "classic") {
-      this.color = [(255/numCircles*(num+1)),200,(255-(255/numCircles*(num+1)))]
+      console.log("classic 2");
+      this.colour = [(255/numCircles*(this.pair+1)),200,(255-(255/numCircles*(this.pair+1)))]
     } else {
       this.colour = col;
     }
