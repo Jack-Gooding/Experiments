@@ -1,5 +1,5 @@
-let ch = 150;
-let cw = 150;
+let ch = 200;
+let cw = 200;
 let hueInterval = 50;
 let highCount = 0;
 let board = {};
@@ -184,7 +184,7 @@ function iterateCascade(x, y) {
 
 function renderPixel(x, y) {
 
-/*
+
   //blueEffect
   if (board[`x${x}`][`y${y}`].count > highCount) {
     highCount = board[`x${x}`][`y${y}`].count;
@@ -193,12 +193,11 @@ function renderPixel(x, y) {
   let hue = 130-board[`x${x}`][`y${y}`].count/highCount;
   ctx.fillStyle = "hsl("+hue+Math.random()*5+", 99%, 40%)";
 
-*/
-
+/*
 let base = 130-(Math.abs(cw/2-x)+Math.abs(ch/2-y))/50;
 let hue = 120+Math.log(board[`x${x}`][`y${y}`].avalanches+1)*25;
 ctx.fillStyle = "hsl("+hue+", 99%, 40%)";
-
+*/
 
 /*
 //Concentric Circles

@@ -1,5 +1,6 @@
 {
   "title": "Circuit Generator",
   "alias": "circuits",
-  "description": "A circuitry generator I created for the background of my website. Randomly creates circles, and then uses an A* pathfinding algorithm to create routes or 'wires' to a corresponding point."
+  "description": "A circuitry generator I created for the background of my website. Randomly creates circles, and then uses an A* pathfinding algorithm to create routes or wires to a corresponding point.",
+  "created": "01-02-2018"
 }

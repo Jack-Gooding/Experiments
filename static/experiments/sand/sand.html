@@ -20,27 +20,29 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>Moon</title>
+    <title>Sandpile</title>
     <!-- premade css -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"><!-- load fontawesome -->
     <link rel="stylesheet" href="./css/bootstrap-toggle.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.0/css/bootstrap-colorpicker.min.css">
 
     <!-- written style -->
     <link href="./css/experiments.less" rel="stylesheet/less" type="text/less"/><!-- css stylesheet -->
-    <link href="./experiments/moon/moon.less" rel="stylesheet/less" type="text/css"/><!-- specific less stylesheet -->
+    <link href="./experiments/sand/sand.less" rel="stylesheet/less" type="text/css"/><!-- specific less stylesheet -->
 
 
     <!-- premade js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script> <!-- Bootstrap Javascript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/2.3.0/js/bootstrap-colorpicker.min.js"></script>
     <script src="./js/less.min.js"></script>
     <script src="./js/bootstrap-toggle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.7.3/p5.min.js" integrity="sha256-gAw6iX1ivbkYgIvRfOXfTEm/w2DZLEB3W6RjSIEydio=" crossorigin="anonymous"></script>
     <script src="../../js/p5.easycam.js"></script>
     <!-- written js -->
 
-    <script src="./experiments/moon/moon.js"></script>
+    <script src="./experiments/sand/sand.js"></script>
 
     <!--Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-121612593-1"></script>
@@ -58,59 +60,58 @@
       <div class="header-bar row"><a href="/"><p>&larr; Experiments</p></a><a href="http://jack-gooding.com"><p>Jack-Gooding.com &rarr;</p></a></div>
       <div class="container-fluid">
         <div class="row">
-      <h1>Moon</h1>
+      <h1>Sandpile</h1>
 
       <div class="col" id="canvas-container">
         <div id="canvas-options">
-            <div class="form-group row">
-
-           <div class="col-xs-4">
-             <label for="moonCount">Moon Count</label>
-             <input class="form-control" id="moonCount" type="text">
-           </div>
-           <div class="col-xs-4">
-             <label for="starCount">Star Count</label>
-             <input class="form-control" id="starCount" type="text">
-           </div>
-           <div class="col-xs-4">
-             <label for="lineCount">Moon Line Count</label>
-             <input class="form-control" id="lineCount" type="text">
-           </div>
-          </div>
           <div class="form-group row">
-         <div class="col-xs-4">
-           <label for="bgColour">Background Colour</label>
-           <input class="form-control" id="bgColour" type="text">
-         </div>
-         <div class="col-xs-4">
-           <label for="distType">Line Distribution Type</label>
-           <select class="form-control" id="distType">
-             <option>Random</option>
-             <option>Gaussian Random</option>
-             <option>Gaussian Inverse</option>
-           </select>
-         </div>
-         <div class="col-xs-4">
-           <label for="sigma">Sigma</label>
-           <input class="form-control" id="sigma" type="text" disabled>
-         </div>
+            <div class="col-xs-3">
+              <label for="bgColour">0 Grains</label>
+              <div id="color-picker1" class="input-group colorpicker-component">
+                <input type="text" value="#00AABB" class="form-control" />
+                <span class="input-group-addon"><i></i></span>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <label for="bgColour">1 Grain</label>
+              <div id="color-picker2" class="input-group colorpicker-component">
+                <input type="text" value="#00AABB" class="form-control" />
+                <span class="input-group-addon"><i></i></span>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <label for="bgColour">2 Grains</label>
+              <div id="color-picker3" class="input-group colorpicker-component">
+                <input type="text" value="#00AABB" class="form-control" />
+                <span class="input-group-addon"><i></i></span>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <label for="bgColour">>3 Grains</label>
+              <div id="color-picker4" class="input-group colorpicker-component">
+                <input type="text" value="#00AABB" class="form-control" />
+                <span class="input-group-addon"><i></i></span>
+              </div>
+            </div>
         </div>
         <div class="form-group row">
+
        <div class="col-xs-4">
-         <label for="lineOffset">Line Offset</label>
-         <input class="form-control" id="lineOffset" type="text" disabled>
+         <label for="totalSand">Total Sand</label>
+         <input class="form-control" id="totalSand" type="text" disabled>
        </div>
-       <div class="col-xs-4">
-         <label for="moonRadius">Moon Radius</label>
-         <input class="form-control" id="moonRadius" type="text" >
+       <div class="input-group">
+         <label for="totalSand">Add Sand</label>
+         <div style="display: flex;">
+         <input type="text" class="form-control" placeholder="Amount" id="addSand">
+         <div class="input-group-btn">
+           <button class="btn btn-primary" onClick="addSand(this)"><i class="glyphicon glyphicon-plus"></i></button>
+         </div>
        </div>
-       <div class="col-xs-4">
-         <label for="canvasSize">Canvas Size</label>
-         <input class="form-control" id="canvasSize" type="text" >
        </div>
       </div>
     </div>
-    <button type="button" onClick="resetCanvas()" class="btn btn-primary" width="100px">Render</button>
+    <button type="button" onClick="render()" class="btn btn-primary btn-block" width="300px">Render During Solve</button>
 
       <div id="canvas-target" class="row">
       <canvas id="canvas"></canvas>

@@ -116,13 +116,13 @@ function resetCanvas() {
 }
 
 function Moon() {
-  this.r = Math.random()*80+40;
+  this.r = Math.random()*moonRadius*.7+moonRadius*.3;
   this.x = Math.random()*(width-this.r*2)+this.r;
   this.y = Math.random()*(height-this.r*2)+this.r;
 
   this.points = [];
 
-  this.colour = [map(this.r,0,120,0,255)];
+  this.colour = [map(this.r,0,moonRadius,0,255)];
 
   this.createPoints = function() {
     for (let i = 0; i < lineCount; i++) {

@@ -1,5 +1,6 @@
 {
   "title": "Starfield Generator",
   "alias": "moon",
-  "description": "An art generator, creates a starfield and multiple 'moon' objects."
+  "description": "An art generator, creates a starfield and multiple 'moon' objects.",
+  "created": "05-03-2019"
 }

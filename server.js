@@ -38,10 +38,9 @@ walk(__dirname + "/static/experiments", function(err, results) {
     //console.log(elementFileType.slice(-1));
     if(elementFileType.slice(-1) == "json") {
       dirName = elementFileType.slice(-2,-1)[0].split("/").slice(-1)[0];
-      //console.log(dirName);
+      console.log(`  ${dirName}`);
       let info = JSON.parse(fs.readFileSync(__dirname +`/static/experiments/${dirName}/${dirName}.json`, 'utf8'));
-      console.log(info);
-      dynamicRoutes.push({alias: info.alias, title: info.title, description: info.description});
+      dynamicRoutes.push({alias: info.alias, title: info.title, description: info.description, created: info.created});
       };
       //app.get(`/${dirName}`, (req, res) => {
         //res.sendfile(__dirname + `/static/experiments/${dirName}/${dirName}.html`); // load the single view file (angular will handle the page changes on the front-end)
