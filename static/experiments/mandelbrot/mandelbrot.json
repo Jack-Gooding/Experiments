@@ -1,0 +1,6 @@
+{
+  "title": "Mandlebrot Set",
+  "alias": "mandelbrot",
+  "description": "The Mandelbrot set is the set of complex numbers which do not diverge from 0 for a given formula. It's a well known example of a fractal and can be infinitely zoomed, given enough iterations.",
+  "created": "22-12-2019"
+}

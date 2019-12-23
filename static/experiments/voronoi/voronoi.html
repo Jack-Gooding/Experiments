@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="./pictures/small2.ico">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../../js/p5.min.js"></script>
+    <script src="./experiments/voronoi/voronoi.js" ></script>
+
+    <!--
+      Notice the use of %PUBLIC_URL% in the tag above.
+      It will be replaced with the URL of the `public` folder during the build.
+      Only files inside the `public` folder can be referenced from the HTML.
+
+      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
+      work correctly both with client-side routing and a non-root public URL.
+      Learn how to configure a non-root public URL by running `npm run build`.
+    -->
+    <title>Voronoi</title>
+    <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body  {
+      overflow: hidden;
+    }
+
+    #overlay-container {
+      position: fixed;
+      right: 20px;
+      top: 20px;
+      background: rgba(40,40,40,0.4);
+      border: solid 3px #296ca7;
+      z-index: 2;
+      border-radius: 5px;
+    }
+    #overlay-heading {
+      border-bottom:solid 1px rgb(30,30,30);
+      text-align: center;
+    }
+
+    #overlay-controls {
+      display:inline-block;
+      padding: 0 10px;
+    }
+    #overlay-controls * {
+      display:inline-block;
+      padding: 10px 5px 0 5px;
+    }
+    #sketch-holder {
+      z-index: 1;
+    }
+    h2 {
+      margin:5px;
+      padding:1px;
+    }
+    </style>
+  </head>
+  <body>
+    <div id="sketch-holder"></div>
+    <div id="overlay-container">
+      <div id="overlay-heading">
+        <h2>Delaunay Generator</h2>
+      </div>
+      <div id="overlay-controls">
+        <p>Show circumcircles</p>
+        <input id="circumcircles" type="checkbox" checked/>
+        <p>Show Delaunay</p>
+        <input id="delaunay" type="checkbox" checked/>
+        <p>Show Voronoi</p>
+        <input id="voronoi" type="checkbox" checked/>
+      </div>
+    </div>
+  </body>
+</html>

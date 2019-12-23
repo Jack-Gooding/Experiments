@@ -5,8 +5,8 @@ let moons = [];
 let stars = [];
 
 let moonRadius = 120;
-let moonCount = 2;
-let lineCount = 360;
+let moonCount = 1;
+let lineCount = 200;
 
 let starCount = 3200;
 
@@ -121,6 +121,7 @@ function Moon() {
   this.y = Math.random()*(height-this.r*2)+this.r;
 
   this.points = [];
+  this.children = [];
 
   this.colour = [map(this.r,0,moonRadius,0,255)];
 
@@ -138,7 +139,8 @@ function Moon() {
     for (let i = 0; i < this.points.length; i++) {
       vertex(this.points[i].x, this.points[i].y);
     }
-    endShape();
+    vertex(this.points[0].x, this.points[0].y);
+    endShape(CLOSE);
     for (let i = 0; i < this.points.length; i++) {
       if (this.points[i].target) {
         target = this.points[i].target;
@@ -164,25 +166,82 @@ function Moon() {
       line(element.x,element.y,target.x,target.y);
       //point(element.x,element.y);
     }
+      for (let i = 0; i < this.children.length; i++) {
+        this.children[i].show();
+        this.children[i].update();
+      }
     }
+
+    this.createChild = function() {
+      let child = new Sun(this);
+      this.children.push(child);
+      child.createPoints();
+    }
+}
+
+function Sun(parent,points, createPoints, show, children, createChild) {
+  Moon.call(this, points, createPoints, show, children, createChild);
+  this.colour = [150+Math.random()*105,150+Math.random()*105,150+Math.random()*105];
+  this.parent = parent;
+  this.r = parent.r/2;
+  this.offSet = parent.offSet/2 || this.r/2;
+  this.angle = Math.random();
+  //this.y = parent.y+(parent.r+this.offSet+this.r)*sin(map(this.angle, 0, 1, -PI, PI));
+  //this.x = parent.x+(parent.r+this.offSet+this.r)*cos(map(this.angle, 0, 1, -PI, PI));
+  this.x = parent.x+parent.r+this.offSet+this.r;
+  this.y = parent.y;
+  this.update = function() {
+    push();
+    this.angle+=0.05;
+    translate(parent.x,parent.y);
+    rotate(this.angle);
+    translate(this.r+parent.r,0);
+    point(this.r+this.parent.r,0);
+    for (let i = 0; i < this.points.length; i++) {
+      point(this.points[i].x-this.parent.x,this.points[i].y-this.parent.y)
+      //this.points[i].x-=parent.x;
+      //this.points[i].y-=parent.y;
+    }
+    strokeWeight(1);
+    for (let i = 0; i < this.points.length; i++) {
+      if (this.points[i].target) {
+        target = this.points[i].target;
+      } else {
+        if (distType === "Random") {
+          random = Math.floor(Math.random()*this.points.length);
+        }
+        target = this.points[random];
+        this.points[i].target = target;
+      }
+      element = this.points[i];
+      line(element.x-this.parent.x,element.y-this.parent.y,target.x-this.parent.x,target.y-this.parent.y);
+      //point(element.x,element.y);
+    }
+    point(0,0);
+    //this.y = parent.y+(parent.r+this.offSet+this.r)*sin(map(this.angle, 0, 1, -PI, PI));
+    //this.x = parent.x+(parent.r+this.offSet+this.r)*cos(map(this.angle, 0, 1, -PI, PI));
+    /*
+    y = parent.y+(parent.r+this.offSet+this.r)*sin(map(this.angle, 0, 1, -PI, PI));
+    x = parent.x+(parent.r+this.offSet+this.r)*cos(map(this.angle, 0, 1, -PI, PI));
+    this.x = x;
+    this.y = y;
+    for (let i = 0; i < this.points.length; i++) {
+      this.points[i].x += x-this.x;
+      this.points[i].y += y-this.y;
+    }
+    */
+    pop();
+  }
 }
 
 function Star() {
   this.x = Math.random()*width;
   this.y = Math.random()*height;
   this.colour = Math.random()>.9 ? (Math.random()>0.5 ? [255,255-Math.random()*150,255-Math.random()*150] :[255-Math.random()*150,255-Math.random()*150,255]) : [255-Math.random()*150];
-  this.hidden = false;
   this.show = function() {
-    for (let i = 0; i < moons.length; i++) {
-      moon = moons[i];
-      if (dist(moon.x,moon.y,this.x,this.y) < moon.r) {
-        this.hidden = true;
-      }
-    }
-    if (this.hidden === false) {
       stroke(this.colour);
       point(this.x,this.y);
-    }
+
   };
 }
 
@@ -206,6 +265,12 @@ function createMoons() {
 function prepareEnvironment() {
   createStars();
   createMoons();
+  moons.forEach(function(moon) {
+    //moon.createChild();
+  });
+  //moons[0].children[0].createChild();
+  //moons[0].children[0].children[0].createChild();
+
   redraw();
 }
 
@@ -217,17 +282,21 @@ function setup() {
 }
 
 function draw() {
-  frameRate(0.05);
+  // Draw FPS (rounded to 2 decimal places) at the bottom left of the screen
+  let fps = frameRate();
+
+  $("#perf-stats").html("FPS: " + fps.toFixed(2));
+
   background(bgColour);
   strokeWeight(1);
   stroke(255);
-
+  point(1,2);
+  stars.forEach(function(star) {
+    star.show();
+  });
   moons.forEach(function(moon) {
     //ellipse(element.x,element.y,5);
     moon.show();
   });
 
-  stars.forEach(function(star) {
-    star.show();
-  })
 }
