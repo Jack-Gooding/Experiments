@@ -1,6 +1,7 @@
 {
   "alias": "soc",
-  "title": "Sandpile v1",
-  "description": "Self Organised Criticality is a term attributed to systems in a constant non-equilibrium state, in which macro changes are caused by minor changes to the system structure. The classic example of SoC is to have a table, of which grains of sand are repeatedly dropped in the centre. The pile will eventually build, and avalanches will occur. The avalanches can be described as the 'critical' point of the system, in which a sum of small changes cause a macro change.",
-  "created": "01-02-2019"
+  "title": "Sandpile",
+  "description": "This visualiser is based on the idea of continually dropping grains of sand in the centre of a pile, and watching the pile naturally cascade down when it becomes too unstable.",
+  "created": "01-02-2019",
+  "thumb": "soc.png"
 }

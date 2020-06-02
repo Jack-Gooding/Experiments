@@ -2,5 +2,6 @@
   "title": "3D",
   "alias": "3D",
   "description": "An attempt at using WEBGL to create a 3d object. Performance is very poor.",
-  "created": "06-03-2019"
+  "created": "06-03-2019",
+  "thumb": "3D.png"
 }

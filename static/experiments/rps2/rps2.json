@@ -1,6 +1,7 @@
 {
   "title": "Rock Paper Scissors v2",
   "alias": "rps2",
-  "description": "This is a demonstration of the 'Sandpile' experiment, a different way of showing Self Organised Criticality. This is the traditional interpretation, and produces some very interesting patterns, although they do take a significant time to process.",
-  "created": "09-03-2019"
+  "description": "This is an evolution of my previous Rock Paper Scissors with smoother animations. The effect is closer to what I was hoping for, but still not there. Colours can be placed manually in this version.",
+  "created": "09-03-2019",
+  "thumb": "rps2.png"
 }

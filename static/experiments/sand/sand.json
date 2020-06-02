@@ -1,6 +1,7 @@
 {
-  "title": "Sandpile v2",
+  "title": "Self Organised Criticality",
   "alias": "sand",
-  "description": "This is a demonstration of the 'Sandpile' experiment, a different way of showing Self Organised Criticality. This is the traditional interpretation, and produces some very interesting patterns, although they do take a significant time to process.",
-  "created": "06-03-2019"
+  "description": "This is a demonstration of the 'Sandpile' experiment, a different way of showing Self Organised Criticality. This is the traditional interpretation, and produces some very interesting patterns, although they do take a significant time to process. <br/><br/> This differs from my other 'Sandpile' in that it does not behave as a typical sandpile does, only stacking to four grains high before cascading to the surrounding pixels.",
+  "created": "06-03-2019",
+  "thumb": "sand.png"
 }

@@ -1,0 +1,7 @@
+{
+  "title": "Generative Tearing",
+  "alias": "tearing",
+  "description": "Based on a gif I saw long ago, this animation is of a an image repeatedly torn in half, copied and torn again. <br/><br/> The 'copying' takes some time, so this animation takes a while to generate.",
+  "created": "25-04-2020",
+  "thumb": "tearing.gif"
+}

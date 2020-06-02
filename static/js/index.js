@@ -6,7 +6,7 @@ $.get("/experiments", (response) => {
       <div class="experiment row">
         <div class="experiment-img col-lg-2 col-sm-6">
           <a href="/${data.alias}">
-            <img src="./experiments/${data.alias}/${data.alias}.png"/ width="150px">
+            <img src="./experiments/${data.alias}/${data.thumb}"/ width="150px">
           </a>
         </div>
         <div class="experiment-title col-lg-2 col-sm-6">
@@ -41,3 +41,5 @@ $.get("/experiments", (response) => {
   };
 
 });
+
+$.get("/experiments")

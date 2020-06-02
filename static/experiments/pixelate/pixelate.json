@@ -1,0 +1,7 @@
+{
+  "title": "Pixelate",
+  "alias": "pixelate",
+  "description": "Upload an image and have it pixelated based on mouse position.",
+  "created": "05-03-2019",
+  "thumb": "canvas1.png"
+}
