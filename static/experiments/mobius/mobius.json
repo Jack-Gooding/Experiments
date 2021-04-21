@@ -3,5 +3,6 @@
   "alias": "Mobius",
   "description": "A mobius strip generated through toroidal circles and slowly rotating. Based on an animation by Twitter user <a href='https://twitter.com/concinnus/status/1246150503257370625'>@CONCINNUS</a>.",
   "created": "25-05-2020",
-  "thumb": "mobius.gif"
+  "thumb": "mobius.gif",
+  "display": true
 }

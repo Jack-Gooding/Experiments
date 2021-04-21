@@ -3,5 +3,6 @@
   "alias": "rps2",
   "description": "This is an evolution of my previous Rock Paper Scissors with smoother animations. The effect is closer to what I was hoping for, but still not there. Colours can be placed manually in this version.",
   "created": "09-03-2019",
-  "thumb": "rps2.png"
+  "thumb": "rps2.png",
+  "display": true
 }

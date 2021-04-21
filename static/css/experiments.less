@@ -1,5 +1,10 @@
 body {
   background: #8ab2cc;
+  background: url("../images/generatedbg.gif");
+  // background: url("../experiments/pleasantbg/pleasantbg.jpg");
+  // background: url("../images/canvas.png");
+  // background: url("../images/loop2.gif");
+  // background-size: 800px;
   text-align: center;
 }
 h1 {
@@ -9,21 +14,26 @@ h1 {
 .header-bar {
   width: 100%;
   display: inline-block;
+  position: relative;
   color: black;
   a {
     color: black;
-    margin: auto;
-    margin-bottom: 0;
-    padding: 10px 10%;
+    margin: 0 40px;
+    margin-top: 3px;
+    margin-bottom: 4px;
     display: inline-block;
     font-size: 1.2em;
-
+    border: 3px solid #181818;
+    border-radius: 10px;
+    width: 14em;
+    padding: 2px;
+    background: #4d7eb6;
   }
 }
 .checkbox {
   margin-top: 0 !important;
   & p {
-    margin-right :20px;
+    margin-right: 20px;
     display: inline-block;
     transform: translateY(-5px);
   }
@@ -54,7 +64,6 @@ h1 {
   flex-wrap: wrap;
   -webkit-justify-content: space-around;
   justify-content: space-around;
-
 }
 #canvas-target {
   text-align: center;
@@ -69,7 +78,6 @@ h1 {
   cursor: pointer;
 }
 
-
 button {
   width: 100px;
   border: solid 5px black;
@@ -79,26 +87,28 @@ button {
   margin-bottom: 15px;
 }
 
-@media (min-width: 480px) { //equivalent to boostrap -xs
+@media (min-width: 480px) {
+  //equivalent to boostrap -xs
 
-    #canvas-container {
-      width: 440px;
-    }
+  #canvas-container {
+    width: 440px;
   }
-@media (min-width: 768px ) { //equivalent to boostrap -sm
+}
+@media (min-width: 768px) {
+  //equivalent to boostrap -sm
 
   #canvas-container {
     width: 540px;
   }
 }
 
-@media (min-width: 992px ) { //equivalent to boostrap -md
+@media (min-width: 992px) {
+  //equivalent to boostrap -md
 
   #canvas-container {
     width: 740px;
   }
 }
-@media (min-width: 1200px) { //equivalent to boostrap -lg
-
-
+@media (min-width: 1200px) {
+  //equivalent to boostrap -lg
 }

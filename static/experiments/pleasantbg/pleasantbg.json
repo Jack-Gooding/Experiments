@@ -1,0 +1,8 @@
+{
+  "title": "Pleasant Background Generator",
+  "alias": "pleasantbg",
+  "description": "A background image generator, randomly placing a selection of shapes on a background. Generated files (.gif or .jpg) are intended to be tileable.",
+  "created": "06-08-2020",
+  "thumb": "pleasantbg.jpg",
+  "display": true
+}

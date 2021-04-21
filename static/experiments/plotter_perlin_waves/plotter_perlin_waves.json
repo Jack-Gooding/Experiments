@@ -1,0 +1,8 @@
+{
+  "title": "Plotter: Perlin Waves",
+  "alias": "plotter_perlin_waves",
+  "description": "Two sets of horizontal lines, each line deformed by several shared perlin noise fields of varying size. <br/> Creates interesting moire patterns when plotted.",
+  "created": "27-12-2020",
+  "thumb": "plotter_perlin_waves.png",
+  "display": true
+}

@@ -3,5 +3,6 @@
   "alias": "pulse",
   "description": "An art generator, spheres pulsing outwards.",
   "created": "05-03-2019",
-  "thumb": "pulse.png"
+  "thumb": "pulse.png",
+  "display": true
 }

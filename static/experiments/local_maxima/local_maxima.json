@@ -1,0 +1,8 @@
+{
+  "title": "Local Maxima",
+  "alias": "local_maxima",
+  "description": "A short experiment to be used in future projects. Tracks local maxima on a noise plane to use as moving distributed points. Some more work needs to be done to prevent mutliple points close together.",
+  "created": "06-08-2020",
+  "thumb": "local_maxima.m4v",
+  "display": true
+}

@@ -3,5 +3,6 @@
   "title": "Sandpile",
   "description": "This visualiser is based on the idea of continually dropping grains of sand in the centre of a pile, and watching the pile naturally cascade down when it becomes too unstable.",
   "created": "01-02-2019",
-  "thumb": "soc.png"
+  "thumb": "soc.png",
+  "display": true
 }

@@ -3,5 +3,6 @@
   "title": "Cookie Cloner",
   "description": "This game is entirely based on the game 'Cookie Clicker', an incremental/idle game which was wildly popular in 2013-14, and caused a massive boom in this genre of game. <br/><br/>My version attempts to recreate the basic functionality of the game, whilst using almost no hardcoded HTML, relying almost exclusively on JQuery to generate the DOM based on several objects.",
   "created": "123",
-  "thumb": "idle_game.png"
+  "thumb": "idle_game.png",
+  "display": true
 }

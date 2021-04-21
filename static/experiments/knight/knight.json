@@ -3,5 +3,6 @@
   "title": "The Trapped Knight",
   "description": "The Trapped Knight, is a mathematical problem. The scenario is based on an infinite chess board, at the centre of which begins a numbered spiral, counting up. A knight piece is placed at the start of this spiral, and will may move as usual except for two rules; the knight may only move to the lowest square it can reach, and it may not move onto a square it has already visited.",
   "created": "25-01-2019",
-  "thumb": "knight.png"
+  "thumb": "knight.png",
+  "display": true
 }

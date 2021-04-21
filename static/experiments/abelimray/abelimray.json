@@ -3,5 +3,6 @@
   "alias": "abelimray",
   "description": "This is a copy of <a href='https://abelimray.com'>Abel + Imray's homepage</a> animation. This was created purely to confirm I was able to recreate it.",
   "created": "20-11-2019",
-  "thumb": "abelimray.png"
+  "thumb": "abelimray.png",
+  "display": true
 }

@@ -1,0 +1,8 @@
+{
+  "title": "Pole Star Exposure",
+  "alias": "polestar",
+  "description": "An attempt to recreate the effect of take a long exposure photo of the night sky, specifically the rotation of the stars around the pole star or north star.",
+  "created": "04-08-2020",
+  "thumb": "polestar.m4v",
+  "display": true
+}

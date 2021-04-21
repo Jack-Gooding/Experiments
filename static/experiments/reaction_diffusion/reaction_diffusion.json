@@ -1,0 +1,8 @@
+{
+  "title": "Reaction Diffusion",
+  "alias": "reaction_diffusion",
+  "description": "A typical reaction diffusion simulation. Needs a lot of optimisation.",
+  "created": "05-03-2019",
+  "thumb": "reaction_diffusion.png",
+  "display": true
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Simlex Noise Seafoam",
+  "alias": "simplex_seafoam",
+  "description": "Inspired by a design by reddit user <a href='https://www.reddit.com/r/generative/comments/hzmul8/simplex_noise_sea_foam_pattern/'>/u/unwinding</a>. Uses 4D OpenSimplex noise to create a looping animation remniscent of the sea.",
+  "created": "06-08-2020",
+  "thumb": "simplex_seafoam.gif",
+  "display": true,
+  "order": 1
+}

@@ -3,5 +3,6 @@
   "alias": "life",
   "description": "Most programmers have heard of John Conway's game of life. It's a type of cellular automata with very few rules.",
   "created": "02-02-2019",
-  "thumb": "life.png"
+  "thumb": "life.png",
+  "display": true
 }

@@ -3,5 +3,6 @@
   "title": "Rock Paper Scissors",
   "description": "This was an attempt at creating a type of Celluar Automata, in which the automata would attempt to spread wherever there was a square their 'team' did not occupy, except for where the 'predator' team were. <br/><br/> The intended goal was to create looping spirals and complex patterns which would not resolve.",
   "created": "31-01-2019",
-  "thumb": "rps.png"
+  "thumb": "rps.png",
+  "display": true
 }

@@ -1,14 +1,27 @@
-
 body {
-  background: #8ab2cc
+  background: #8ab2cc;
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  & > h1 {
+    margin: 5px auto;
+    margin-bottom: 10px;
+    border: 3px solid #181818;
+    border-radius: 10px;
+    padding: 5px;
+    width: 14em;
+    background: #4d7eb6;
+  }
 }
 
 .header-bar {
+  clear: both;
   text-align: left;
   width: 75%;
   margin: auto;
   font-size: 1.2em;
   padding: 5px;
+  z-index: 1;
   & > a {
     color: black;
   }
@@ -24,21 +37,18 @@ body {
     border-radius: 10px;
   }
 
-  &  > * {
+  & > * {
     //border: solid 1px black;
   }
   & a {
-
     & :hover {
-
     }
     & :active {
-
     }
   }
   & .experiment-img {
     background: white;
-    border-radius: 10px;
+    // border-radius: 10px;
   }
   & .experiment-title {
     padding: 10px;
@@ -47,23 +57,36 @@ body {
 
   & .experiment-desc {
     & p {
-
     }
   }
 }
 
 .container-fluid {
   margin: 0 10%;
+  z-index: 2;
 }
+
+#container-background-filter {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  min-height: 100%;
+  display: block;
+  position: absolute;
+  background: #333;
+  opacity: 0.4;
+  z-index: -1;
+}
+
 .experiment {
-  margin: 5px auto;
+  margin: 12px auto;
   border: 3px solid #181818;
   border-radius: 10px;
   padding: 5px;
   background: #4d7eb6;
 
-  &  > * {
-
+  & > * {
     //border: solid 1px black;
   }
   & a {
@@ -72,18 +95,21 @@ body {
       color: lighten(#181818, 20%);
     }
     & :active {
-
     }
   }
   & .experiment-img {
-    img {
-      background: white;
+    a {
+      overflow: hidden;
       border-radius: 10px;
+    }
+    img,
+    video {
+      background: white;
+      // border-radius: 10px;
       margin: 2% auto;
       display: block;
       width: 100%;
       border: 3px solid #181818;
-
     }
   }
   & .experiment-title {
@@ -96,23 +122,22 @@ body {
 
   & .experiment-desc {
     & p {
-
     }
     & a {
       color: #181818;
-      font-weight:500;
+      font-weight: 500;
       text-decoration: underline;
     }
   }
 }
 
-
 //@media (min-width: 480px) { //equivalent to boostrap -xs
 //@media (min-width: 768px ) { //equivalent to boostrap -sm
 //@media (min-width: 992px ) { //equivalent to boostrap -md
-@media (min-width: 1200px) { //equivalent to boostrap -lg
+@media (min-width: 1200px) {
+  //equivalent to boostrap -lg
   .experiment {
     display: flex;
-     align-items: center;
-   }
+    align-items: center;
+  }
 }

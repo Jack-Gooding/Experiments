@@ -3,5 +3,6 @@
   "alias": "moon",
   "description": "An art generator, creates a starfield and multiple 'moon' objects.",
   "created": "05-03-2019",
-  "thumb": "moon.png"
+  "thumb": "moon.png",
+  "display": true
 }

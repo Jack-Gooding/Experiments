@@ -1,5 +1,5 @@
-let sWidth = 512;
-let sHeight = 512;
+let sWidth = 128;
+let sHeight = 128;
 
 let canvas;
 
@@ -89,7 +89,7 @@ function draw() {
         cA += grid[y][x][0]*cScale;
         cB += grid[y][x][1]*cScale;
       }
-      if (grid[y+1]) {
+      if (grid[y+1] && grid[y+1][x]) {
         cA += grid[y+1][x][0]*cScale;
         cB += grid[y+1][x][1]*cScale;
       } else {
@@ -119,14 +119,14 @@ function draw() {
         cA += grid[y][x][0]*cScale;
         cB += grid[y][x][1]*cScale;
       }
-      if (grid[y+1] && grid[y][x-1]) {
+      if (grid[y+1] && grid[y+1][x-1]) {
         cA += grid[y+1][x-1][0]*cScale;
         cB += grid[y+1][x-1][1]*cScale;
       } else {
         cA += grid[y][x][0]*cScale;
         cB += grid[y][x][1]*cScale;
       }
-      if (grid[y+1] && grid[y][x+1]) {
+      if (grid[y+1] && grid[y+1][x+1]) {
         cA += grid[y+1][x+1][0]*cScale;
         cB += grid[y+1][x+1][1]*cScale;
       } else {
@@ -144,16 +144,19 @@ function draw() {
     }
   }
 
+  //console.log(nextGrid);
   for (let y = 0; y < grid.length; y++) {
     for (let x = 0; x < grid[y].length; x++) {
-      let valM = nextGrid[y][x][1]/nextGrid[y][x][0];
-      let valC = constrain(valM,0,1);
-      let col = lerpColor(color(aColour),color(bColour),valC)
-      //let col = map(nextGrid[y][x][1], 0, 1, 255, 0);
+      if (nextGrid[y][x]) {
+        let valM = nextGrid[y][x][1]/nextGrid[y][x][0];
+        let valC = constrain(valM,0,1);
+        let col = lerpColor(color(aColour),color(bColour),valC)
+        //let col = map(nextGrid[y][x][1], 0, 1, 255, 0);
 
-      stroke(col);
-      fill(col);
-      rect(x,y,1,1);
+        stroke(col);
+        fill(col);
+        rect(x,y,1,1);
+      }
     }
   }
 
